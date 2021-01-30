@@ -7,12 +7,12 @@
 
 struct question {
 
-    char prompt;
-    char opt_a;
-    char opt_b;
-    char opt_c;
-    char opt_d;
-    char answer;
+    char prompt[MAX_LEN];
+    char opt_a[MAX_LEN];
+    char opt_b[MAX_LEN];
+    char opt_c[MAX_LEN];
+    char opt_d[MAX_LEN];
+    char answer[MAX_LEN];
     struct question *next;
 
 };
