@@ -71,7 +71,7 @@ void homescreen() {
     printf(" >Press A to add a question\n");
     printf("______________________________________\n\n");
     printf("______________________________________\n");
-    printf("\n >Press A to add a question\n");
+    printf(" >Press A to add a question\n");
     printf(" >Press D to delete a question\n");
     printf(" >Press S to start quiz");
     printf(" >Press Q to quit\n");
