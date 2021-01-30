@@ -111,6 +111,7 @@ void ret(){
         /* note that fgets don't strip the terminating \n, checking its
 
            presence would allow to handle lines longer that sizeof(line) */
+        fgets(line, sizeof(line), fp);
         printf("%s", line); 
         
 
