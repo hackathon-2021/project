@@ -17,10 +17,11 @@ struct question {
 
 };
 
+//function declaration
+int homescreen(void);
 
 
-int main (void){
-
+int main (void) {
 
 
     ///////// STRUCTURE  //////////////
@@ -56,5 +57,20 @@ int main (void){
         // after last question of quiz, show score
         // back to home screen; resets score
 
+
+}
+
+
+int homescreen(void) {
+    printf("______________________________________\n\n");
+    printf("WELCOME TO THE QUIZ GAME\n");
+    printf("\n______________________________________\n");
+    printf("\n >Press A to add a question\n");
+    printf(" >Press D to delete a question\n");
+    printf(" >Press D to delete a question\n");
+    printf(" >Press S to add options");
+    printf(" >Press R to reset\n");
+    printf(" >Press Q to quit\n");
+    printf("\n______________________________________\n");
 
 }
