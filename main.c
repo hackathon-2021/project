@@ -1,12 +1,30 @@
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+#define MAX_LEN 1000
+
+struct question {
+
+    char prompt[MAX_LEN];
+    char opt_a[MAX_LEN];
+    char opt_b[MAX_LEN];
+    char opt_c[MAX_LEN];
+    char opt_d[MAX_LEN];
+    char answer[MAX_LEN];
+    struct question *next;
+
+};
+
+
 
 int addQuestion();
 
 
 int main (void){
 
-    printf("Hello World\n");
+
 
     ///////// STRUCTURE  //////////////
 
