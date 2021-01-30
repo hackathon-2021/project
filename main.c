@@ -15,10 +15,10 @@ int main (void){
     // EOF to end adding questions
 
     // Starts quiz
-      // A, B, C, D to select answer.
-      // Right answer: correct
-      // Wrong answer: incorrect, show answer, next question, no second chance
-
+        // A, B, C, D to select answer.
+        // Right answer: correct
+        // Wrong answer: incorrect, show answer, next question, no second chance
+        // try to randomise the answers
 
     //
 
@@ -31,4 +31,9 @@ int function_1(void){
 
     //Mihir's function
 
+}
+
+int function {
+    ???
+    return 0;
 }
