@@ -10,8 +10,7 @@ void ret();
 
 int main(){
     save();
-
-    //ret();
+    ret();
 }
 
 
@@ -39,38 +38,49 @@ void save()
         exit(EXIT_FAILURE);
     }
 
-    while()
     /* Input contents from user to store in file */
     printf("Enter the first question: \n");
-    fgets(data, DATA_SIZE, stdin);
+    
+    int count = 0; 
+    while(count < 6){
 
-    char question[DATA_SIZE] = {"Q."};
-
-    //remove newline from fgets
-    strtok(data,"\n");
-    strcat(question,data);
-    fputs(question, fPtr);
-    fputs("\n",fPtr);
-
-
-
-    printf("Enter the 4 options : \n");
-
-    char abcd[5] = {'A','B','C','D'};
-    char dot[2] = ". ";
-    int i = 0;
-    while(i<4){
         fgets(data, DATA_SIZE, stdin);
-
-        char option[DATA_SIZE] = {abcd[i]};
+        char question[DATA_SIZE] = {"Q."};
 
         //remove newline from fgets
+        strtok(data,"\n");
+        strcat(question,data);
+        fputs(question, fPtr);
+        fputs("\n",fPtr);
 
-        strcat(option,data);
+
+
+        printf("Enter the 4 options : \n");
+
+        char abcd[5] = {'A','B','C','D'};
+        char dot[2] = ". ";
+        int i = 0;
+        while(i<4){
+            fgets(data, DATA_SIZE, stdin);
+
+            char option[DATA_SIZE] = {abcd[i]};
+
+            //remove newline from fgets
+
+            strcat(option,data);
+            fputs(option, fPtr);
+            i++;
+        }
+
+
+
+        printf("Enter correct option");
+        fgets(data, DATA_SIZE, stdin);
         fputs(option, fPtr);
-        i++;
-    }
+        printf("Enter Next question: \n");
+        count++;
 
+    }
     /* Close file to save file data */
     fclose(fPtr);
 
@@ -98,6 +108,10 @@ void ret(){
         /* note that fgets don't strip the terminating \n, checking its
            presence would allow to handle lines longer that sizeof(line) */
         printf("%s", line); 
+        printf("input ur answer");
+
+        //function to cross check 5th line with
+
     }
     fclose(fp);
 }
