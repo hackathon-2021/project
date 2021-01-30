@@ -44,12 +44,15 @@ int main (void) {
         // A, B, C, D to select answer; scanf users option;
         // Right answer: correct; +1 to score counter
         // Wrong answer: incorrect, show answer, next question, no second chance
+        // at the end of the quiz, call the show score function?
 
         // TRY to randomise the answers
 
     // Show score
         // number of questions = total score
+        // traverse through linked list w questions and count 
         // Calculate Score;
+        // ("Congrats, you got %d out of %d\n", correct, total)
         // track right answers;
         // after last question of quiz, show score
         // back to home screen; resets score
