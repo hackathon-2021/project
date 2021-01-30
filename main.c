@@ -20,7 +20,6 @@ struct question {
 //function declaration
 void homescreen();
 
-
 int main (void) {
     void homescreen();
     char command[10];
@@ -55,7 +54,7 @@ int main (void) {
 
     // Show score
         // number of questions = total score
-        // traverse through linked list w questions and count 
+        // traverse through linked list w questions and count
         // Calculate Score;
         // ("Congrats, you got %d out of %d\n", correct, total)
         // track right answers;
@@ -65,10 +64,11 @@ int main (void) {
 
 }
 
-
 void homescreen() {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
+    printf("______________________________________\n");
+    printf(" >Press A to add a question\n");
     printf("______________________________________\n\n");
     printf("______________________________________\n");
     printf("\n >Press A to add a question\n");
