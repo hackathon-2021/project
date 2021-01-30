@@ -50,7 +50,7 @@ int main (void) {
 
     // Show score
         // number of questions = total score
-        // traverse through linked list w questions and count 
+        // traverse through linked list w questions and count
         // Calculate Score;
         // ("Congrats, you got %d out of %d\n", correct, total)
         // track right answers;
@@ -64,13 +64,10 @@ int main (void) {
 int homescreen(void) {
     printf("______________________________________\n\n");
     printf("WELCOME TO THE QUIZ GAME\n");
-    printf("\n______________________________________\n");
-    printf("\n >Press A to add a question\n");
+    printf("______________________________________\n");
+    printf(" >Press A to add a question\n");
     printf(" >Press D to delete a question\n");
-    printf(" >Press D to delete a question\n");
-    printf(" >Press S to add options");
-    printf(" >Press R to reset\n");
     printf(" >Press Q to quit\n");
-    printf("\n______________________________________\n");
+    printf("______________________________________\n");
 
 }
