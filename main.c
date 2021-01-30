@@ -77,17 +77,22 @@ void homescreen() {
 
 
 #define MAXCHAR 1000
+#define Q_LINES 5
 
 // function should read line x 4
 // scanf answer
 // print correct or wrong
 // go to next question
 
-int read_question() {
+int take_quiz(void) {
+
+    printf("---Welcome-to-your-Quiz---");
+
+
 
     FILE *fp;
     char str[MAXCHAR];
-    char* filename = " "; // insert file name
+    char* filename = "file1.txt"; // insert file name
 
     fp = fopen(filename, "r");
     if (fp == NULL) {
@@ -96,11 +101,38 @@ int read_question() {
         return 1;
 
     }
+// start loop here
+    while(1){
 
-    while (fgets(str, MAXCHAR, fp) != NULL)
-        printf("%s", str);
+        int q_count = 0;
 
-    fclose(fp);
-    return 0;
+        while (q_count < Q_LINES) {
+
+            while (fgets(str, MAXCHAR, fp) != NULL) {
+                printf("%s", str);
+            }
+            q_count++;
+        }
+
+        char user_ans[1];
+        scanf("%s", &user_ans);
+
+        char ans[1];
+        (fgets(ans, MAXCHAR, fp) != NULL);
+
+        if (user_ans == ans) {
+
+            printf("Correct\n");
+        } else {
+            printf("Incorrect\n");
+        }
+        
+    }
+
+
+    if (fgets(line, sizeof(line), fp) == NULL) {
+        fclose(fp);
+    }
+
 
 }
