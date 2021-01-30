@@ -5,7 +5,8 @@ int main (void){
 
     printf("Hello World\n");
 
-    ///////// STRUCTURE //////////////
+    ///////// STRUCTURE  //////////////
+
 
     // Read text from user for question(s)
 
@@ -19,8 +20,15 @@ int main (void){
       // Wrong answer: incorrect, show answer, next question, no second chance
 
 
-    //  
+    //
 
 
+
+}
+
+
+int function_1(void){
+
+    //Mihir's function
 
 }
