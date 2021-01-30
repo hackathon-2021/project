@@ -21,10 +21,9 @@ struct question {
 int homescreen(void);
 int show_score(void);
 
-void homescreen();
 
 int main (void) {
-    void homescreen();
+    void homescreen(void);
     char command[10];
     if (scanf("%s", &command) == 1) {
         if (command == 'A') {
@@ -75,7 +74,7 @@ int main (void) {
 
 }
 
-void homescreen() {
+int homescreen(void) {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
