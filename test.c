@@ -43,11 +43,10 @@ void save()
     printf("Enter the first question: \n");
     
     int count = 0; 
-    while(count < 6){
+    while(count < 2){
 
         fgets(data, DATA_SIZE, stdin);
         char question[DATA_SIZE] = {"Q."};
-
         //remove newline from fgets
         strtok(data,"\n");
         strcat(question,data);
@@ -62,6 +61,8 @@ void save()
         char dot[2] = ". ";
         int i = 0;
         while(i<4){
+
+            printf("Option %c: ", abcd[i]);
             fgets(data, DATA_SIZE, stdin);
 
             char option[DATA_SIZE] = {abcd[i]};
@@ -75,9 +76,10 @@ void save()
 
 
 
-        printf("Enter correct option");
-        fgets(data, DATA_SIZE, stdin);
-        fputs(option, fPtr);
+        printf("Enter correct option: ");
+        char ans[1];
+        fgets(ans, DATA_SIZE, stdin);
+        fputs(ans, fPtr);
         printf("Enter Next question: \n");
         count++;
 
@@ -107,9 +109,10 @@ void ret(){
     }
     while (fgets(line, sizeof(line), fp)) {
         /* note that fgets don't strip the terminating \n, checking its
+
            presence would allow to handle lines longer that sizeof(line) */
         printf("%s", line); 
-        printf("input ur answer");
+        
 
         //function to cross check 5th line with
 
