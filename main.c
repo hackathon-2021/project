@@ -17,6 +17,8 @@ struct question {
 
 };
 
+//function declaration
+int homescreen(void);
 
 
 int main (void) {
@@ -52,5 +54,12 @@ int main (void) {
         // after last question of quiz, show score
         // back to home screen; resets score
 
+
+}
+
+
+int homescreen(void) {
+    printf("WELCOME TO THE QUIZ GAME\n");
+    printf("______________________________________");
 
 }
