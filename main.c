@@ -24,3 +24,8 @@ int main (void){
 
 
 }
+
+int function {
+    ???
+    return 0;
+}
