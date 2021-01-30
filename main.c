@@ -18,47 +18,34 @@ struct question {
 };
 
 //function declaration
-int homescreen(void);
-void show_score(int correct_answers, int total_questions);
+void homescreen();
 
-
-int addQuestion();
-
-
-int main (void){
 int main (void) {
-    void homescreen(void);
-    char command[10];
-    if (scanf("%s", &command) == 1) {
-        if (command == 'A') {
+    void homescreen();
 
-        }
-        if (command == 'D') {
+    ///////// STRUCTURE //////////////
 
-        }
-        if (command == 'S') {
-            
-        }
-    }
+    // HOME SCREEN
+    // press 1: add question
+    // press 2: delete question
+    // press 3: take quiz
 
-
-    ///////// STRUCTURE  //////////////
-
-
+    // press 1: add question
     // Read text from user for question(s)
+    // Read in 4 possible answers; 1 is the correct answer;
+    // Ask user for option A, option B etc.
+    // Ask user for correct option
+    // either continue adding or stop adding questions
 
-    // Read in 4 possible answers; 1 is the correct answer
 
-    // EOF to end adding questions
-
+    // press 3: take quiz
     // Starts quiz
-        // A, B, C, D to select answer.
-        // Right answer: correct
+        // A, B, C, D to select answer; scanf users option;
+        // Right answer: correct; +1 to score counter
         // Wrong answer: incorrect, show answer, next question, no second chance
-        // try to randomise the answers
         // at the end of the quiz, call the show score function?
 
-    //
+        // TRY to randomise the answers
 
     // Show score
         // number of questions = total score
@@ -72,30 +59,48 @@ int main (void) {
 
 }
 
-
-void homescreen(void) {
+void homescreen() {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
     printf(" >Press A to add a question\n");
     printf("______________________________________\n\n");
     printf("______________________________________\n");
-    printf(" >Press A to add a question\n");
+    printf("\n >Press A to add a question\n");
     printf(" >Press D to delete a question\n");
-    printf(" >Press S to start quiz");
     printf(" >Press Q to quit\n");
-    printf("\n______________________________________\n");
     printf("______________________________________\n");
-    return;
+
+
 }
 
 
-void show_score(int correct_answers, int total_questions) {
 
-    int a = correct_answers;
-    int b = total_questions;
-    printf("Congratulations! You scored %d out of %d\n", a, b);
+#define MAXCHAR 1000
 
-    return;
+// function should read line x 4
+// scanf answer
+// print correct or wrong
+// go to next question
+
+int read_question() {
+
+    FILE *fp;
+    char str[MAXCHAR];
+    char* filename = " "; // insert file name
+
+    fp = fopen(filename, "r");
+    if (fp == NULL) {
+
+        printf("Could not open file %s", filename);
+        return 1;
+
+    }
+
+    while (fgets(str, MAXCHAR, fp) != NULL)
+        printf("%s", str);
+
+    fclose(fp);
+    return 0;
+
 }
-    
