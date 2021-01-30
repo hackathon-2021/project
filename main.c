@@ -1,9 +1,27 @@
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+
+#define MAX_LEN 1000
+
+struct question {
+
+    char prompt;
+    char opt_a;
+    char opt_b;
+    char opt_c;
+    char opt_d;
+    char answer;
+    struct question *next;
+
+};
+
+
 
 int main (void){
 
-    printf("Hello World\n");
+
 
     ///////// STRUCTURE  //////////////
 
@@ -36,11 +54,4 @@ int main (void){
         // back to home screen; resets score
 
 
-}
-
-
-int  {
-
-    ???
-    return 0;
 }
