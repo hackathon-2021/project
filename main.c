@@ -23,6 +23,11 @@ void homescreen();
 
 int main (void) {
     void homescreen();
+    char command[10];
+    if (scanf("%s", &command) ==1) {
+        
+    }
+
 
     ///////// STRUCTURE  //////////////
 
@@ -68,10 +73,8 @@ void homescreen() {
     printf("______________________________________\n");
     printf("\n >Press A to add a question\n");
     printf(" >Press D to delete a question\n");
-    printf(" >Press D to delete a question\n");
-    printf(" >Press S to add options");
-    printf(" >Press R to reset\n");
+    printf(" >Press S to start quiz");
     printf(" >Press Q to quit\n");
     printf("______________________________________\n");
-    
+    return;
 }
