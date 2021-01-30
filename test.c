@@ -38,6 +38,7 @@ void save()
         exit(EXIT_FAILURE);
     }
 
+
     /* Input contents from user to store in file */
     printf("Enter the first question: \n");
     

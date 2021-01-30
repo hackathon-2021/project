@@ -19,16 +19,15 @@ struct question {
 
 //function declaration
 int homescreen(void);
-int show_score(void);
+void show_score(int correct_answers, int total_questions);
 
-void homescreen();
 
 int addQuestion();
 
 
 int main (void){
 int main (void) {
-    void homescreen();
+    void homescreen(void);
     char command[10];
     if (scanf("%s", &command) == 1) {
         if (command == 'A') {
@@ -74,8 +73,7 @@ int main (void) {
 }
 
 
-
-void homescreen() {
+void homescreen(void) {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
@@ -92,19 +90,12 @@ void homescreen() {
 }
 
 
-int show_score(void) {
-    // traverse through linked list w questions and count 
-        // Calculate Score;
-        // ("Congrats, you got %d out of %d\n", correct, total)
-        // track right answers;
-        // after last question of quiz, show score
-        // back to home screen; resets score
+void show_score(int correct_answers, int total_questions) {
 
-    // call the linked list with questions
     int a = correct_answers;
     int b = total_questions;
     printf("Congratulations! You scored %d out of %d\n", a, b);
 
-    return 0;
+    return;
 }
     
