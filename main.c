@@ -21,8 +21,7 @@ struct question {
 int homescreen(void);
 
 
-int main (void){
-
+int main (void) {
 
 
     ///////// STRUCTURE  //////////////
