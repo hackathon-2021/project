@@ -39,7 +39,7 @@ void save()
         exit(EXIT_FAILURE);
     }
 
-    while() {
+
     /* Input contents from user to store in file */
     printf("Enter the first question: \n");
     fgets(data, DATA_SIZE, stdin);
