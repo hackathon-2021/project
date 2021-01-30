@@ -22,6 +22,10 @@ int homescreen(void);
 int show_score(void);
 
 
+int addQuestion();
+
+
+int main (void){
 int main (void) {
     void homescreen(void);
     char command[10];
@@ -40,27 +44,21 @@ int main (void) {
 
     ///////// STRUCTURE  //////////////
 
-    // HOME SCREEN
-    // press 1: add question
-    // press 2: delete question
-    // press 3: take quiz
 
-    // press 1: add question
     // Read text from user for question(s)
-    // Read in 4 possible answers; 1 is the correct answer;
-    // Ask user for option A, option B etc.
-    // Ask user for correct option
-    // either continue adding or stop adding questions
 
+    // Read in 4 possible answers; 1 is the correct answer
 
-    // press 3: take quiz
+    // EOF to end adding questions
+
     // Starts quiz
-        // A, B, C, D to select answer; scanf users option;
-        // Right answer: correct; +1 to score counter
+        // A, B, C, D to select answer.
+        // Right answer: correct
         // Wrong answer: incorrect, show answer, next question, no second chance
+        // try to randomise the answers
         // at the end of the quiz, call the show score function?
 
-        // TRY to randomise the answers
+    //
 
     // Show score
         // number of questions = total score
@@ -74,7 +72,8 @@ int main (void) {
 
 }
 
-int homescreen(void) {
+
+void homescreen(void) {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
