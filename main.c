@@ -62,15 +62,16 @@ int main (void) {
 
 
 void homescreen() {
-    printf("______________________________________\n\n");
+    printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
-    printf("\n______________________________________\n");
+    printf("______________________________________\n\n");
+    printf("______________________________________\n");
     printf("\n >Press A to add a question\n");
     printf(" >Press D to delete a question\n");
     printf(" >Press D to delete a question\n");
     printf(" >Press S to add options");
     printf(" >Press R to reset\n");
     printf(" >Press Q to quit\n");
-    printf("\n______________________________________\n");
+    printf("______________________________________\n");
     
 }
