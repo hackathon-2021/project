@@ -1,6 +1,9 @@
 
 #include <stdio.h>
 
+int addQuestion();
+
+
 int main (void){
 
     printf("Hello World\n");
@@ -27,20 +30,4 @@ int main (void){
 }
 
 
-int function_1(void){
 
-    //Mihir's function
-
-}
-
-int function {
-    ???
-    return 0;
-}
-
-
-add(){
-
-
-
-}
