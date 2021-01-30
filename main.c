@@ -24,7 +24,15 @@ int main (void) {
     void homescreen();
     char command[10];
     if (scanf("%s", &command) == 1) {
-        
+        if (command == 'A') {
+
+        }
+        if (command == 'D') {
+
+        }
+        if (command == 'S') {
+            
+        }
     }
 
 
