@@ -19,8 +19,7 @@ struct question {
 
 
 
-int main (void){
-
+int main (void) {
 
 
     ///////// STRUCTURE  //////////////
