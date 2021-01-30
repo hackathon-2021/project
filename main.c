@@ -24,7 +24,7 @@ void homescreen();
 int main (void) {
     void homescreen();
     char command[10];
-    if (scanf("%s", &command) ==1) {
+    if (scanf("%s", &command) == 1) {
         
     }
 
