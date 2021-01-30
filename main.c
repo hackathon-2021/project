@@ -87,8 +87,10 @@ void homescreen() {
     printf(" >Press S to start quiz");
     printf(" >Press Q to quit\n");
     printf("\n______________________________________\n");
-
+    printf("______________________________________\n");
+    return;
 }
+
 
 int show_score(void) {
     // traverse through linked list w questions and count 
@@ -105,6 +107,4 @@ int show_score(void) {
 
     return 0;
 }
-    printf("______________________________________\n");
-    return;
-}
+    
