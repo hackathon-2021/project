@@ -92,7 +92,6 @@ void homescreen() {
 }
 
 
-
 int show_score(void) {
     // traverse through linked list w questions and count 
         // Calculate Score;
