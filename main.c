@@ -18,11 +18,10 @@ struct question {
 };
 
 //function declaration
-int homescreen(void);
-
+void homescreen();
 
 int main (void) {
-
+    void homescreen();
 
     ///////// STRUCTURE  //////////////
 
@@ -60,14 +59,17 @@ int main (void) {
 
 }
 
-
-int homescreen(void) {
-    printf("______________________________________\n\n");
+void homescreen() {
+    printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
     printf(" >Press A to add a question\n");
+    printf("______________________________________\n\n");
+    printf("______________________________________\n");
+    printf("\n >Press A to add a question\n");
     printf(" >Press D to delete a question\n");
     printf(" >Press Q to quit\n");
     printf("______________________________________\n");
+
 
 }
