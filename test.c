@@ -6,12 +6,31 @@
 
 void save();
 void ret();
-
+void edit();
 
 int main(){
-    save();
-    ret();
+    edit();
+    //save();
+    //ret();
 }
+
+
+void edit(){
+    FILE *fp; // creates a pointer to a file
+    char filename[] = "file1.txt";
+    fp = fopen(filename, "a"); 
+    int n = 2;
+    char str[1000];
+    printf(" The lines are : \n");  
+    for(int i = 0; i < n+1;i++)
+    {
+    fgets(str, sizeof str, stdin);
+    fputs(str, fp);
+  }
+  fclose (fp);
+}
+
+
 
 
 void save()
@@ -51,7 +70,7 @@ void save()
         strtok(data,"\n");
         strcat(question,data);
         fputs(question, fPtr);
-        fputs("\n",fPtr);
+        fputs("\n",fPtr):
 
 
 
@@ -69,7 +88,7 @@ void save()
 
             //remove newline from fgets
 
-            strcat(option,data);
+            strcat(option,data)
             fputs(option, fPtr);
             i++;
         }
