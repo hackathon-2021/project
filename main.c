@@ -72,6 +72,10 @@ int main (void) {
         // new functions to be added:
         //  -delete questions?!
         //function to convert both answers to same case. i.e both upper case or both lower case
+        // add a wait timer after each answer
+        // add infinite questions when making
+        //function to convert both answers to same case. i.e both upper case or both lower case
+        // change take quiz number of questions
         //
         //
         //
@@ -398,56 +402,53 @@ void delete_question() {
     char ch;
     int delete_line, temp = 1;
 
-
+    //printf("Enter file name: ");
+    //scanf("%s", filename);
     //open file in read mode
     fileptr1 = fopen(filename, "r");
     ch = getc(fileptr1);
-    while (ch != EOF)
+        while (ch != EOF)
     {
         printf("%c", ch);
         ch = getc(fileptr1);
     }
     //rewind
-    int delete_q;
-    int till_five = 0;
-
     rewind(fileptr1);
-    // printf(" \n Enter line number of the line to be deleted:");
-    printf(" \n Enter question number to be deleted:");
-    scanf("%d", &delete_q);
+    /*printf(" \n Enter line number of the line to be deleted:");
+    scanf("%d", &delete_line);*/
 
-    while (till_five < 5) {
-        delete_line = (6 * delete_q) - till_five;
+    // if Q2; lines
+    //open new file in write mode
+    int question_num;
+    printf("Enter question to be deleted: \n");
+    scanf("%d", &question_num);
 
-        //open new file in write mode
-        fileptr2 = fopen("replica.txt", "w");
+
+    int lower_ignore = (7 * question_num) - 6;
+    int upper_ignore = 7 * question_num;
+
+    fileptr2 = fopen("replica.c", "w");
+    ch = getc(fileptr1);
+    while (ch != EOF)
+    {
         ch = getc(fileptr1);
-
-        while (ch != EOF) {
-
-            ch = getc(fileptr1);
-            if (ch == '\n'){
-                temp++;
+        if (ch == '\n')
+            temp++;
+            //except the line to be deleted
+            if (temp < lower_ignore || temp > upper_ignore)
+            {
+                //copy all lines in file replica.c
+                putc(ch, fileptr2);
             }
-                //except the line to be deleted
-                if (temp != delete_line)
-                {
-                    //copy all lines in file replica.c
-                    putc(ch, fileptr2);
-                }
-        }
-
-
-        fclose(fileptr1);
-        fclose(fileptr2);
-        remove(filename);
-        //rename the file replica.c to original name
-        rename("replica.txt", filename);
-
-        till_five++;
     }
 
 
+    fclose(fileptr1);
+    fclose(fileptr2);
+    remove(filename);
+    //rename the file replica.c to original name
+    rename("replica.c", filename);
+    printf("\n The contents of file after being modified are as follows:\n");
     fileptr1 = fopen(filename, "r");
     ch = getc(fileptr1);
     while (ch != EOF)
@@ -455,7 +456,6 @@ void delete_question() {
         ch = getc(fileptr1);
     }
     fclose(fileptr1);
-
 
 
 }
