@@ -20,7 +20,7 @@ void delete_question();
 void homescreen();
 
 int main (void) {
-
+    create_quiz();
     take_quiz();
     /*homescreen();
     sleep(5);
@@ -179,7 +179,7 @@ int take_quiz(void) {
             printf("Incorrect correct answer was %s\n", ans);
             wrong_answers++;
         }
-        sleep(3);
+        sleep(2);
     c++;
 
     }
@@ -255,13 +255,19 @@ void create_quiz()
     }
 
 
-    /* Input contents from user to store in file */
-    printf("Enter the first question: \n");
-
+    printf("How many questions would you like to add to your quiz? \n");
+    int n;
+    char str1[20];
+    fgets(str1,20,stdin);
+    n = strtof(str1,NULL);
     int count = 0;
-    while(count < 2){
-
+    /* Input contents from user to store in file */
+    while(count < n){
+        printf("---------------------------------");
+        printf("Enter question: \n");
         fgets(data, DATA_SIZE, stdin);
+        fputs(data, fPtr);
+
         char question[DATA_SIZE] = {"Q."};
         //remove newline from fgets
         strtok(data,"\n");
@@ -273,11 +279,9 @@ void create_quiz()
 
         printf("Enter the 4 options : \n");
 
-        char abcd[5] = {'A','B','C','D'};
-        char dot[2] = ". ";
         int i = 0;
         while(i<4){
-
+            char abcd[5] = {'A','B','C','D'};
             printf("Option %c: ", abcd[i]);
             fgets(data, DATA_SIZE, stdin);
 
@@ -296,7 +300,6 @@ void create_quiz()
         char ans[1];
         fgets(ans, DATA_SIZE, stdin);
         fputs(ans, fPtr);
-        printf("Enter Next question: \n");
         count++;
 
     }
@@ -369,7 +372,6 @@ void delete_question() {
         ch = getc(fileptr1);
     }
     fclose(fileptr1);
-    return 0;
 
 
 
