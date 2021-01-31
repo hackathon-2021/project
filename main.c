@@ -10,29 +10,42 @@
 
 
 int take_quiz(void);
-void save();
+void create_quiz();
 
-struct question {
-
-    char prompt[MAX_LEN];
-    char opt_a[MAX_LEN];
-    char opt_b[MAX_LEN];
-    char opt_c[MAX_LEN];
-    char opt_d[MAX_LEN];
-    char answer[MAX_LEN];
-    struct question *next;
-
-};
 
 //function declaration
 void homescreen();
 
 int main (void) {
+
+    // Command 1; Create Quiz
+    // Command 2; Add question
+    // Command 3; Take Quiz
+    // Command 4; Delete question
+
     homescreen();
     sleep(5);
-    save();
+
+    int command;
+    scanf("%d", &command);
+
+    if (command == 1) {
+        create_quiz(); // make quiz
+
+    } else if (command == 2) {
+        // add question;
+
+    } else if (command == 3) {
+        take_quiz();
+
+    } else if (command == 4) {
+        // delete question;
+
+    } else {
+      printf("INVALID COMMAND\n");
+    }
+
     sleep(1);
-    take_quiz();
 
     ///////// STRUCTURE //////////////
 
@@ -67,14 +80,14 @@ int main (void) {
         // after last question of quiz, show score
         // back to home screen; resets score
 
-        //TODO 
+        //TODO
         // if else cases for homescreen to go to function, so A calls add function.. etc
-        // new functions to be added: 
+        // new functions to be added:
         //  -adding questions
         //  -delete questions?!
-        // add a wait timer after each answer
-        // add infinite questions when making 
-        //  
+        //
+        //
+        //
 
 }
 
@@ -82,17 +95,15 @@ void homescreen() {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
-    printf(" >Press M to make a quiz\n");
-    printf("______________________________________\n\n");
-    printf("______________________________________\n");
-    printf("\n >Press T to take the quiz\n");
-    printf(" >Press D to delete a question\n");
-    printf(" >Press Q to quit\n");
+    printf(" >Press 1 to make a quiz\n");
+    printf(" >Press 2 to add a question\n");
+    printf("\n >Press 3 to take the quiz\n");
+    printf(" >Press 4 to delete a question\n");
+    // printf(" >Press Q to quit\n");
     printf("______________________________________\n");
 
 
 }
-
 
 
 #define MAXCHAR 1000
@@ -149,7 +160,7 @@ int take_quiz(void) {
             wrong_answers++;
         }
         sleep(3);
-    c++;    
+    c++;
 
     }
 
@@ -160,7 +171,7 @@ int take_quiz(void) {
 }
 
 
-void save()
+void create_quiz()
 {
     /* Variable to store user content */
     char data[DATA_SIZE];
@@ -169,8 +180,8 @@ void save()
     FILE * fPtr;
 
 
-    /* 
-     * Open file in w (write) mode. 
+    /*
+     * Open file in w (write) mode.
      * "data/file1.txt" is complete path to create file
      */
     fPtr = fopen("file1.txt", "w");
@@ -187,8 +198,8 @@ void save()
 
     /* Input contents from user to store in file */
     printf("Enter the first question: \n");
-    
-    int count = 0; 
+
+    int count = 0;
     while(count < 2){
 
         fgets(data, DATA_SIZE, stdin);
@@ -238,4 +249,3 @@ void save()
 
 
 }
-
