@@ -100,7 +100,7 @@ void homescreen() {
     printf("______________________________________\n");
     printf(" >Press 1 to make a quiz\n");
     printf(" >Press 2 to add a question\n");
-    printf("\n >Press 3 to take the quiz\n");
+    printf(" >Press 3 to take the quiz\n");
     printf(" >Press 4 to delete a question\n");
     // printf(" >Press Q to quit\n");
     printf("______________________________________\n");
@@ -170,7 +170,7 @@ int take_quiz(void) {
     printf("\n Your score is %d/2",2-wrong_answers);
 
 
-
+    return 0;
 }
 
 
@@ -279,16 +279,18 @@ void delete_question() {
     scanf("%d", &delete_q);
 
     while (till_five < 5) {
-        delete_line = 6 * delete_q - till_five;
+        delete_line = (6 * delete_q) - till_five;
 
         //open new file in write mode
-        fileptr2 = fopen("replica.c", "w");
+        fileptr2 = fopen("replica.txt", "w");
         ch = getc(fileptr1);
-        while (ch != EOF)
-        {
+
+        while (ch != EOF) {
+
             ch = getc(fileptr1);
-            if (ch == '\n')
+            if (ch == '\n'){
                 temp++;
+            }
                 //except the line to be deleted
                 if (temp != delete_line)
                 {
@@ -296,14 +298,18 @@ void delete_question() {
                     putc(ch, fileptr2);
                 }
         }
+
+
+        fclose(fileptr1);
+        fclose(fileptr2);
+        remove(filename);
+        //rename the file replica.c to original name
+        rename("replica.txt", filename);
+
         till_five++;
     }
 
-    fclose(fileptr1);
-    fclose(fileptr2);
-    remove(filename);
-    //rename the file replica.c to original name
-    rename("replica.c", filename);
+
     printf("\n The contents of file after being modified are as follows:\n");
     fileptr1 = fopen(filename, "r");
     ch = getc(fileptr1);
@@ -313,8 +319,5 @@ void delete_question() {
         ch = getc(fileptr1);
     }
     fclose(fileptr1);
-    return 0;
-
-
 
 }
