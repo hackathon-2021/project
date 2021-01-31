@@ -11,6 +11,7 @@
 
 int take_quiz(void);
 void save();
+void edit();
 
 struct question {
 
@@ -28,12 +29,15 @@ struct question {
 void homescreen();
 
 int main (void) {
-    homescreen();
-    sleep(5);
+
     save();
+    take_quiz();
+    /*homescreen();
+    sleep(5);
+    edit();
     sleep(1);
     take_quiz();
-
+*/
     ///////// STRUCTURE //////////////
 
     // HOME SCREEN
@@ -74,6 +78,7 @@ int main (void) {
         //  -delete questions?!
         // add a wait timer after each answer
         // add infinite questions when making 
+        //function to convert both answers to same case. i.e both upper case or both lower case
         //  
 
 }
@@ -120,16 +125,22 @@ int take_quiz(void) {
     }
 
 
+
+
     char line[256];
 // start loop here
     int c = 0;
     while(c<2){
 
         int q_count = 0;
+        char abcd[5] = {'A','B','C','D'};
+        char dot[2] = ". ";
 
-        while (q_count < Q_LINES) {
+        fgets(str, MAXCHAR, fp);
+        printf("\n%s",str);
+        while (q_count < 4) {
             fgets(str, MAXCHAR, fp);
-            printf("%s", str);
+            printf("Option %c. %s",abcd[q_count], str);
             q_count++;
         }
         printf("Enter ur answer: \n");
@@ -139,7 +150,6 @@ int take_quiz(void) {
         fgets(ans, MAXCHAR, fp);
         strtok(ans,"\n");
 
-        //function to convert both answers to same case. i.e both upper case or both lower case
 
 
         if (strcmp(ans,user_ans)==0) {
@@ -157,6 +167,45 @@ int take_quiz(void) {
 
 
 
+}
+
+void edit(){
+    FILE *fp; // creates a pointer to a file
+    char filename[] = "file1.txt";
+    fp = fopen(filename, "a"); 
+    int n = 2;
+    char str[1000];
+    char data[DATA_SIZE];
+    printf("Enter your question: \n");  
+    fgets(str, sizeof str, stdin);
+    fputs(str, fp);
+
+    printf("Enter the 4 options : \n");
+
+    char abcd[5] = {'A','B','C','D'};
+    char dot[2] = ". ";
+    int i = 0;
+    while(i<4){
+
+            printf("Option %c: ", abcd[i]);
+            fgets(data, DATA_SIZE, stdin);
+
+            char option[DATA_SIZE] = {abcd[i]};
+
+            //remove newline from fgets
+
+            strcat(option,data);
+            fputs(option, fp);
+            i++;
+
+    }
+    printf("Enter correct option: ");
+    char ans[1];
+    fgets(ans, DATA_SIZE, stdin);
+    strtok(ans,"\n");
+    fputs(ans, fp);
+
+  fclose(fp);
 }
 
 
@@ -211,12 +260,12 @@ void save()
             printf("Option %c: ", abcd[i]);
             fgets(data, DATA_SIZE, stdin);
 
-            char option[DATA_SIZE] = {abcd[i]};
+            //char option[DATA_SIZE] = {abcd[i]};
 
             //remove newline from fgets
 
-            strcat(option,data);
-            fputs(option, fPtr);
+            //strcat(option,data);
+            fputs(data, fPtr);
             i++;
         }
 
