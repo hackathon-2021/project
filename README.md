@@ -16,7 +16,7 @@ Clone the repo and run the main.exe file.
 
 **Cathy Cam** -  - [CatzeeC](https://github.com/CatzeeC)
 
-**Akshit Amin** -  - [Aki](https://github.com/11aki)
+**Akshit Amin** -  - [11aki](https://github.com/11aki)
 
 ## Acknowledgments
 
