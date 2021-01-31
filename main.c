@@ -2,8 +2,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #define MAX_LEN 1000
+
+
+int take_quiz(void);
 
 struct question {
 
@@ -21,7 +25,8 @@ struct question {
 void homescreen();
 
 int main (void) {
-    void homescreen();
+    homescreen();
+    take_quiz();
 
     ///////// STRUCTURE //////////////
 
@@ -64,9 +69,9 @@ void homescreen() {
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
     printf(" >Press A to add a question\n");
+    printf("______________________________________\n\n");
     printf("______________________________________\n");
-    printf("______________________________________\n");
-    printf("\n >Press A to add a question\n");
+    printf("\n >Press T to take the quiz\n");
     printf(" >Press D to delete a question\n");
     printf(" >Press Q to quit\n");
     printf("______________________________________\n");
@@ -86,7 +91,8 @@ void homescreen() {
 
 int take_quiz(void) {
 
-    printf("--------Welcome--to--your--Quiz--------\n");
+    printf("---Welcome-to-your-Quiz---\n");
+    int wrong_answers = 0;
 
 
 
@@ -101,38 +107,41 @@ int take_quiz(void) {
         return 1;
 
     }
-    // start loop here
-    while(1){
+    char line[256];
+// start loop here
+    int c = 0;
+    while(c<2){
 
         int q_count = 0;
 
         while (q_count < Q_LINES) {
-
-            while (fgets(str, MAXCHAR, fp) != NULL) {
-                printf("%s", str);
-            }
+            fgets(str, MAXCHAR, fp);
+            printf("%s", str);
             q_count++;
         }
+        printf("Enter ur answer: \n");
+        char user_ans[MAXCHAR];
+        scanf("%s", user_ans);
+        char ans[MAXCHAR];
+        fgets(ans, MAXCHAR, fp);
+        strtok(ans,"\n");
 
-        char user_ans[1];
-        scanf("%s", &user_ans);
+        //function to convert both answers to same case. i.e both upper case or both lower case
 
-        char ans[1];
-        (fgets(ans, MAXCHAR, fp) != NULL);
 
-        if (user_ans == ans) {
-
+        if (strcmp(ans,user_ans)==0) {
             printf("Correct\n");
         } else {
             printf("Incorrect\n");
+            wrong_answers++;
         }
+    c++;    
 
     }
 
 
-    if (fgets(line, sizeof(line), fp) == NULL) {
-        fclose(fp);
-    }
+    printf("\n Your score is %d/2",2-wrong_answers);
+
 
 
 }
