@@ -11,6 +11,8 @@
 
 int take_quiz(void);
 void create_quiz();
+void delete_question();
+
 
 
 //function declaration
@@ -39,6 +41,7 @@ int main (void) {
         take_quiz();
 
     } else if (command == 4) {
+        delete_question();
         // delete question;
 
     } else {
@@ -246,6 +249,58 @@ void create_quiz()
 
 
     /* Success message */
+
+
+}
+
+void delete_question() {
+
+    FILE *fptr1, *fptr2;
+    char file1[] ="file1.txt";
+    char file2[] ="file2.txt";
+    char curr;
+    int del;
+    int line_number = 0;
+
+    int delete_q;
+    //printf("Please enter the line number you want to delete : ");
+    printf("Please enter the question number you want to delete : ");
+    scanf("%d", &delete_q);
+
+    // lines to delete
+    // 6*delete_q - 6
+
+    
+    //scanf("%d", &del);
+    int till_six = 0;
+    del = (6 * delete_q) - till_six;
+
+    fptr1 = fopen(file1,"r");
+    fptr2 = fopen(file2, "w");
+    curr = getc(fptr1);
+
+    if(curr!=EOF) {
+      line_number = 1;
+    }
+
+    while(1) {
+
+      if(del != line_number){
+        putc(curr, fptr2);
+        curr = getc(fptr1);
+      }
+        if(curr =='\n') {
+          line_number++;
+        }
+
+        if(curr == EOF){
+          break;
+        }
+    }
+
+    fclose(fptr1);
+    fclose(fptr2);
+
 
 
 }
