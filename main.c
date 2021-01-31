@@ -5,8 +5,8 @@
 #include <string.h>
 #include <unistd.h>
 
-#define MAX_LEN 1000
-#define DATA_SIZE 1000
+#define MAX_LEN 100
+#define DATA_SIZE 100
 
 
 int take_quiz(void);
@@ -20,8 +20,6 @@ void delete_question();
 void homescreen();
 
 int main (void) {
-    create_quiz();
-    take_quiz();
     /*homescreen();
     sleep(5);
     edit();
@@ -34,17 +32,17 @@ int main (void) {
     // Command 4; Delete question
 
     homescreen();
-    sleep(5);
 
     int command;
-    scanf("%d", &command);
+    char str1[1001];
+    fgets(str1,1001,stdin);
+    command = strtof(str1,NULL);
 
     if (command == 1) {
         create_quiz(); // make quiz
 
     } else if (command == 2) {
-        // add question;
-
+        edit();
     } else if (command == 3) {
         take_quiz();
 
@@ -99,7 +97,7 @@ int main (void) {
         // add a wait timer after each answer
         // add infinite questions when making 
         //function to convert both answers to same case. i.e both upper case or both lower case
-        //  
+        // change take quiz number of questions 
         //
         //
         //
@@ -233,7 +231,7 @@ void edit(){
 void create_quiz()
 {
     /* Variable to store user content */
-    char data[DATA_SIZE];
+    char data[100];
 
     /* File pointer to hold reference to our file */
     FILE * fPtr;
@@ -257,8 +255,8 @@ void create_quiz()
 
     printf("How many questions would you like to add to your quiz? \n");
     int n;
-    char str1[20];
-    fgets(str1,20,stdin);
+    char str1[1001];
+    fgets(str1,1001,stdin);
     n = strtof(str1,NULL);
     int count = 0;
     /* Input contents from user to store in file */
