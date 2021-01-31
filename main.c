@@ -61,6 +61,13 @@ int main (void) {
         // after last question of quiz, show score
         // back to home screen; resets score
 
+        //TODO 
+        // if else cases for homescreen
+        // new functions
+        //  -adding questions
+        //  -delete questions?!
+        // add a wait timer after each answer
+        //  
 
 }
 
@@ -68,7 +75,7 @@ void homescreen() {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
-    printf(" >Press A to add a question\n");
+    printf(" >Press A to make a quiz\n");
     printf("______________________________________\n\n");
     printf("______________________________________\n");
     printf("\n >Press T to take the quiz\n");
