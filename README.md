@@ -1,9 +1,20 @@
-# project
+# NotQuizlet
 
-this is our first hackathon 
+A command line quiz app with local storage. Built using C.
 
-ez win
+## Getting Started
 
-GME AMC to the moooon 🚀🚀🚀🚀🚀🚀🚀
+Clone the repo and run the main.exe file.
 
-Made this change from GitHub 
+
+
+## Authors
+
+**Mihir Puranik** -  - [Mihir87](https://github.com/mihir87)
+**Sylvia Lim** -  - [MEINx](https://github.com/MEINx)
+**Cathy Cam** -  - [CatzeeC](https://github.com/CatzeeC)
+**Akshit Amin** -  - [Aki](https://github.com/11aki)
+
+## Acknowledgments
+
+* GME AND AMC to the moonn🚀🚀🚀🚀🚀
