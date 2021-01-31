@@ -311,51 +311,65 @@ void create_quiz()
 
 void delete_question() {
 
-    FILE *fptr1, *fptr2;
-    char file1[] ="file1.txt";
-    char file2[] ="file2.txt";
-    char curr;
-    int del;
-    int line_number = 0;
+    FILE *fileptr1, *fileptr2;
+    char filename[40] = "file1.txt";
+    char ch;
+    int delete_line, temp = 1;
 
+
+    //open file in read mode
+    fileptr1 = fopen(filename, "r");
+    ch = getc(fileptr1);
+    while (ch != EOF)
+    {
+        printf("%c", ch);
+        ch = getc(fileptr1);
+    }
+    //rewind
     int delete_q;
-    //printf("Please enter the line number you want to delete : ");
-    printf("Please enter the question number you want to delete : ");
+    int till_five = 0;
+
+    rewind(fileptr1);
+    // printf(" \n Enter line number of the line to be deleted:");
+    printf(" \n Enter question number to be deleted:");
     scanf("%d", &delete_q);
 
-    // lines to delete
-    // 6*delete_q - 6
+    while (till_five < 5) {
+        delete_line = 6 * delete_q - till_five;
 
-    
-    //scanf("%d", &del);
-    int till_six = 0;
-    del = (6 * delete_q) - till_six;
-
-    fptr1 = fopen(file1,"r");
-    fptr2 = fopen(file2, "w");
-    curr = getc(fptr1);
-
-    if(curr!=EOF) {
-      line_number = 1;
+        //open new file in write mode
+        fileptr2 = fopen("replica.c", "w");
+        ch = getc(fileptr1);
+        while (ch != EOF)
+        {
+            ch = getc(fileptr1);
+            if (ch == '\n')
+                temp++;
+                //except the line to be deleted
+                if (temp != delete_line)
+                {
+                    //copy all lines in file replica.c
+                    putc(ch, fileptr2);
+                }
+        }
+        till_five++;
     }
 
-    while(1) {
-
-      if(del != line_number){
-        putc(curr, fptr2);
-        curr = getc(fptr1);
-      }
-        if(curr =='\n') {
-          line_number++;
-        }
-
-        if(curr == EOF){
-          break;
-        }
+    fclose(fileptr1);
+    fclose(fileptr2);
+    remove(filename);
+    //rename the file replica.c to original name
+    rename("replica.c", filename);
+    printf("\n The contents of file after being modified are as follows:\n");
+    fileptr1 = fopen(filename, "r");
+    ch = getc(fileptr1);
+    while (ch != EOF)
+    {
+        printf("%c", ch);
+        ch = getc(fileptr1);
     }
-
-    fclose(fptr1);
-    fclose(fptr2);
+    fclose(fileptr1);
+    return 0;
 
 
 
