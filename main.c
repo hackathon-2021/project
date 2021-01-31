@@ -33,28 +33,6 @@ int main (void) {
 
     homescreen();
 
-    int command;
-    char str1[1001];
-    fgets(str1,1001,stdin);
-    command = strtof(str1,NULL);
-
-    if (command == 1) {
-        create_quiz(); // make quiz
-
-    } else if (command == 2) {
-        edit();
-    } else if (command == 3) {
-        take_quiz();
-
-    } else if (command == 4) {
-        delete_question();
-        // delete question;
-
-    } else {
-      printf("INVALID COMMAND\n");
-    }
-
-    sleep(1);
 
     ///////// STRUCTURE //////////////
 
@@ -92,12 +70,8 @@ int main (void) {
         //TODO
         // if else cases for homescreen to go to function, so A calls add function.. etc
         // new functions to be added:
-        //  -adding questions
         //  -delete questions?!
-        // add a wait timer after each answer
-        // add infinite questions when making 
         //function to convert both answers to same case. i.e both upper case or both lower case
-        // change take quiz number of questions 
         //
         //
         //
@@ -115,6 +89,28 @@ void homescreen() {
     // printf(" >Press Q to quit\n");
     printf("______________________________________\n");
 
+    int command;
+    char str1[1001];
+    fgets(str1,1001,stdin);
+    command = strtof(str1,NULL);
+
+    if (command == 1) {
+        create_quiz(); // make quiz
+
+    } else if (command == 2) {
+        edit();
+    } else if (command == 3) {
+        take_quiz();
+
+    } else if (command == 4) {
+        delete_question();
+        // delete question;
+
+    } else {
+      printf("INVALID COMMAND\n");
+    }
+
+    sleep(1);
 
 }
 
@@ -129,7 +125,7 @@ void homescreen() {
 
 int take_quiz(void) {
 
-    printf("---Welcome-to-your-Quiz---\n");
+    printf("\n---Welcome-to-your-Quiz---\n");
     int wrong_answers = 0;
 
     FILE *fp;
@@ -143,33 +139,39 @@ int take_quiz(void) {
         return 1;
     }
 
+    //count2 how many lines to find number of questions
+    
+    char ce;
+    int count = 0;
+     for (ce = getc(fp); ce != EOF; ce = getc(fp)) 
+        if (ce == '\n') // Increment count if this character is newline 
+            count = count + 1; 
 
-
-
+    printf("count is %d",count);
+    fclose(fp);
+    fp = fopen(filename, "r");
+    
+    count = count / 6;
     char line[256];
 // start loop here
-    int c = 0;
-    while(c<2){
+    int c = 0; 
+    while(c < count){
 
         int q_count = 0;
         char abcd[5] = {'A','B','C','D'};
         char dot[2] = ". ";
-
         fgets(str, MAXCHAR, fp);
-        printf("\n%s",str);
+        printf("\n%s\n",str);
         while (q_count < 4) {
             fgets(str, MAXCHAR, fp);
             printf("Option %c. %s",abcd[q_count], str);
             q_count++;
         }
-        printf("Enter ur answer: \n");
+        printf("\nEnter ur answer: \n");
         char user_ans[MAXCHAR];
-        scanf("%s", user_ans);
+        fgets(user_ans,1001,stdin);
         char ans[MAXCHAR];
         fgets(ans, MAXCHAR, fp);
-        strtok(ans,"\n");
-
-
 
         if (strcmp(ans,user_ans)==0) {
             printf("Correct\n");
@@ -178,26 +180,101 @@ int take_quiz(void) {
             wrong_answers++;
         }
         sleep(2);
+        printf("\n------------------------------\n");
     c++;
 
     }
 
-    printf("\n Your score is %d/2",2-wrong_answers);
+    printf("Quiz completed!!!\n");
+    printf("\n Your score is %d/%d\n",count-wrong_answers,count);
 
+    sleep(1);
 
-    return 0;
+    homescreen();
 }
 
 void edit(){
     FILE *fp; // creates a pointer to a file
     char filename[] = "file1.txt";
-    fp = fopen(filename, "a"); 
+    fp = fopen(filename, "r"); 
+
+     char ce;
+    int count = 1;
+     for (ce = getc(fp); ce != EOF; ce = getc(fp)){ 
+        if (ce == '\n') // Increment count if this character is newline 
+            count = count + 1; 
+     }
+
+    fclose(fp);
+
+
+
+
+
+
+
+
+
+    FILE *fileptr1, *fileptr2;
+    char ch;
+    int delete_line, temp = 1;
+
+    //open file in read mode
+    fileptr1 = fopen(filename, "r");
+    ch = getc(fileptr1);
+   while (ch != EOF)
+    {
+        ch = getc(fileptr1);
+    }
+    //rewind
+    rewind(fileptr1);
+    delete_line = count;
+    //open new file in write mode
+    fileptr2 = fopen("replica.c", "w");
+    ch = getc(fileptr1);
+    while (ch != EOF)
+    {
+        ch = getc(fileptr1);
+        if (ch == '\n')
+            temp++;
+            //except the line to be deleted
+            if (temp != delete_line)
+            {
+                //copy all lines in file replica.c
+                putc(ch, fileptr2);
+            }
+    }
+    fclose(fileptr1);
+    fclose(fileptr2);
+    remove(filename);
+    //rename the file replica.c to original name
+    rename("replica.c", filename);
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    fp = fopen(filename, "a");
     int n = 2;
     char str[1000];
     char data[DATA_SIZE];
-    printf("Enter your question: \n");  
+    printf("\nEnter your question: \n");  
     fgets(str, sizeof str, stdin);
-    fputs(str, fp);
+    char qq[MAXCHAR] = "\nQ.";
+    strcat(qq,str);
+    fputs(qq, fp);
 
     printf("Enter the 4 options : \n");
 
@@ -223,8 +300,13 @@ void edit(){
     fgets(ans, DATA_SIZE, stdin);
     strtok(ans,"\n");
     fputs(ans, fp);
+    fputs("\n",fp);
 
   fclose(fp);
+  sleep(1);
+  
+    printf("Question added successfully !!!\n");
+  homescreen();
 }
 
 
@@ -264,14 +346,12 @@ void create_quiz()
         printf("---------------------------------\n");
         printf("Enter question: \n");
         fgets(data, DATA_SIZE, stdin);
-        fputs(data, fPtr);
 
         char question[DATA_SIZE] = {"Q."};
         //remove newline from fgets
         strtok(data,"\n");
         strcat(question,data);
         fputs(question, fPtr);
-        fputs("\n",fPtr);
 
 
 
@@ -282,11 +362,11 @@ void create_quiz()
             char abcd[5] = {'A','B','C','D'};
             printf("Option %c: ", abcd[i]);
             fgets(data, DATA_SIZE, stdin);
-
+            fputs("\n",fPtr);
             //char option[DATA_SIZE] = {abcd[i]};
 
             //remove newline from fgets
-
+            strtok(data,"\n");
             //strcat(option,data);
             fputs(data, fPtr);
             i++;
@@ -297,6 +377,8 @@ void create_quiz()
         printf("Enter correct option: ");
         char ans[1];
         fgets(ans, DATA_SIZE, stdin);
+        fputs("\n",fPtr);
+
         fputs(ans, fPtr);
         count++;
 
@@ -304,10 +386,9 @@ void create_quiz()
     /* Close file to save file data */
     fclose(fPtr);
 
-
     /* Success message */
-
-
+    printf("Quiz successfully created!!!\n");
+    homescreen();
 }
 
 void delete_question() {
@@ -367,12 +448,10 @@ void delete_question() {
     }
 
 
-    printf("\n The contents of file after being modified are as follows:\n");
     fileptr1 = fopen(filename, "r");
     ch = getc(fileptr1);
     while (ch != EOF)
     {
-        printf("%c", ch);
         ch = getc(fileptr1);
     }
     fclose(fileptr1);
