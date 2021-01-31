@@ -10,7 +10,7 @@ Clone the repo and run the main.exe file.
 
 ## Authors
 
-**Mihir Puranik** -  - [Mihir87](https://github.com/mihir87)
+**Mihir Puranik** -  - [Mehere87](https://github.com/mehere87)
 
 **Sylvia Lim** -  - [MEINx](https://github.com/MEINx)
 
