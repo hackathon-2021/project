@@ -20,65 +20,8 @@ void delete_question();
 void homescreen();
 
 int main (void) {
-    /*homescreen();
-    sleep(5);
-    edit();
-    sleep(1);
-    take_quiz();
-*/
-    // Command 1; Create Quiz
-    // Command 2; Add question
-    // Command 3; Take Quiz
-    // Command 4; Delete question
 
     homescreen();
-
-
-    ///////// STRUCTURE //////////////
-
-    // HOME SCREEN
-    // press 1: add question
-    // press 2: delete question
-    // press 3: take quiz
-
-    // press 1: add question
-    // Read text from user for question(s)
-    // Read in 4 possible answers; 1 is the correct answer;
-    // Ask user for option A, option B etc.
-    // Ask user for correct option
-    // either continue adding or stop adding questions
-
-
-    // press 3: take quiz
-    // Starts quiz
-        // A, B, C, D to select answer; scanf users option;
-        // Right answer: correct; +1 to score counter
-        // Wrong answer: incorrect, show answer, next question, no second chance
-        // at the end of the quiz, call the show score function?
-
-        // TRY to randomise the answers
-
-    // Show score
-        // number of questions = total score
-        // traverse through linked list w questions and count
-        // Calculate Score;
-        // ("Congrats, you got %d out of %d\n", correct, total)
-        // track right answers;
-        // after last question of quiz, show score
-        // back to home screen; resets score
-
-        //TODO
-        // if else cases for homescreen to go to function, so A calls add function.. etc
-        // new functions to be added:
-        //  -delete questions?!
-        //function to convert both answers to same case. i.e both upper case or both lower case
-        // add a wait timer after each answer
-        // add infinite questions when making
-        //function to convert both answers to same case. i.e both upper case or both lower case
-        // change take quiz number of questions
-        //
-        //
-        //
 
 }
 
@@ -122,10 +65,6 @@ void homescreen() {
 #define MAXCHAR 1000
 #define Q_LINES 5
 
-// function should read line x 4
-// scanf answer
-// print correct or wrong
-// go to next question
 
 int take_quiz(void) {
 
@@ -215,10 +154,6 @@ void edit(){
 
 
 
-
-
-
-
     FILE *fileptr1, *fileptr2;
     char ch;
     int delete_line, temp = 1;
@@ -254,12 +189,6 @@ void edit(){
     //rename the file replica.c to original name
     rename("replica.c", filename);
     
-
-
-
-
-
-
 
 
 
