@@ -409,7 +409,7 @@ void delete_question() {
     ch = getc(fileptr1);
         while (ch != EOF)
     {
-        printf("%c", ch);
+        //printf("%c", ch);
         ch = getc(fileptr1);
     }
     //rewind
@@ -448,7 +448,7 @@ void delete_question() {
     remove(filename);
     //rename the file replica.c to original name
     rename("replica.c", filename);
-    printf("\n The contents of file after being modified are as follows:\n");
+    // printf("\n The contents of file after being modified are as follows:\n");
     fileptr1 = fopen(filename, "r");
     ch = getc(fileptr1);
     while (ch != EOF)
@@ -456,6 +456,6 @@ void delete_question() {
         ch = getc(fileptr1);
     }
     fclose(fileptr1);
-
+    homescreen();
 
 }
