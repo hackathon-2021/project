@@ -263,7 +263,7 @@ void create_quiz()
     int count = 0;
     /* Input contents from user to store in file */
     while(count < n){
-        printf("---------------------------------");
+        printf("---------------------------------\n");
         printf("Enter question: \n");
         fgets(data, DATA_SIZE, stdin);
         fputs(data, fPtr);
