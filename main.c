@@ -3,11 +3,14 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <string.h>
+#include <unistd.h>
 
 #define MAX_LEN 1000
+#define DATA_SIZE 1000
 
 
 int take_quiz(void);
+void save();
 
 struct question {
 
@@ -26,6 +29,9 @@ void homescreen();
 
 int main (void) {
     homescreen();
+    sleep(5);
+    save();
+    sleep(1);
     take_quiz();
 
     ///////// STRUCTURE //////////////
@@ -62,11 +68,12 @@ int main (void) {
         // back to home screen; resets score
 
         //TODO 
-        // if else cases for homescreen
-        // new functions
+        // if else cases for homescreen to go to function, so A calls add function.. etc
+        // new functions to be added: 
         //  -adding questions
         //  -delete questions?!
         // add a wait timer after each answer
+        // add infinite questions when making 
         //  
 
 }
@@ -75,7 +82,7 @@ void homescreen() {
     printf("______________________________________\n");
     printf("WELCOME TO THE QUIZ GAME\n");
     printf("______________________________________\n");
-    printf(" >Press A to make a quiz\n");
+    printf(" >Press M to make a quiz\n");
     printf("______________________________________\n\n");
     printf("______________________________________\n");
     printf("\n >Press T to take the quiz\n");
@@ -101,8 +108,6 @@ int take_quiz(void) {
     printf("---Welcome-to-your-Quiz---\n");
     int wrong_answers = 0;
 
-
-
     FILE *fp;
     char str[MAXCHAR];
     char* filename = "file1.txt"; // insert file name
@@ -112,8 +117,9 @@ int take_quiz(void) {
 
         printf("Could not open file %s", filename);
         return 1;
-
     }
+
+
     char line[256];
 // start loop here
     int c = 0;
@@ -139,16 +145,97 @@ int take_quiz(void) {
         if (strcmp(ans,user_ans)==0) {
             printf("Correct\n");
         } else {
-            printf("Incorrect\n");
+            printf("Incorrect correct answer was %s\n", ans);
             wrong_answers++;
         }
+        sleep(3);
     c++;    
 
     }
-
 
     printf("\n Your score is %d/2",2-wrong_answers);
 
 
 
 }
+
+
+void save()
+{
+    /* Variable to store user content */
+    char data[DATA_SIZE];
+
+    /* File pointer to hold reference to our file */
+    FILE * fPtr;
+
+
+    /* 
+     * Open file in w (write) mode. 
+     * "data/file1.txt" is complete path to create file
+     */
+    fPtr = fopen("file1.txt", "w");
+
+
+    /* fopen() return NULL if last operation was unsuccessful */
+    if(fPtr == NULL)
+    {
+        /* File not created hence exit */
+        printf("Unable to create file.\n");
+        exit(EXIT_FAILURE);
+    }
+
+
+    /* Input contents from user to store in file */
+    printf("Enter the first question: \n");
+    
+    int count = 0; 
+    while(count < 2){
+
+        fgets(data, DATA_SIZE, stdin);
+        char question[DATA_SIZE] = {"Q."};
+        //remove newline from fgets
+        strtok(data,"\n");
+        strcat(question,data);
+        fputs(question, fPtr);
+        fputs("\n",fPtr);
+
+
+
+        printf("Enter the 4 options : \n");
+
+        char abcd[5] = {'A','B','C','D'};
+        char dot[2] = ". ";
+        int i = 0;
+        while(i<4){
+
+            printf("Option %c: ", abcd[i]);
+            fgets(data, DATA_SIZE, stdin);
+
+            char option[DATA_SIZE] = {abcd[i]};
+
+            //remove newline from fgets
+
+            strcat(option,data);
+            fputs(option, fPtr);
+            i++;
+        }
+
+
+
+        printf("Enter correct option: ");
+        char ans[1];
+        fgets(ans, DATA_SIZE, stdin);
+        fputs(ans, fPtr);
+        printf("Enter Next question: \n");
+        count++;
+
+    }
+    /* Close file to save file data */
+    fclose(fPtr);
+
+
+    /* Success message */
+
+
+}
+
