@@ -6,12 +6,16 @@
 
 void save();
 void ret();
+void del();
 void edit();
 
 int main(){
-    edit();
+    //edit();
     //save();
     //ret();
+
+
+    del();
 }
 
 
@@ -70,7 +74,7 @@ void save()
         strtok(data,"\n");
         strcat(question,data);
         fputs(question, fPtr);
-        fputs("\n",fPtr):
+        fputs("\n",fPtr);
 
 
 
@@ -88,7 +92,7 @@ void save()
 
             //remove newline from fgets
 
-            strcat(option,data)
+            strcat(option,data);
             fputs(option, fPtr);
             i++;
         }
@@ -138,5 +142,34 @@ void ret(){
 
     }
     fclose(fp);
+}
+
+
+void del(){
+
+
+        FILE *fptr1, *fptr2;
+    char file1[] ="file1.txt";
+    char file2[] ="file2.txt";
+    char curr;
+    int del, line_number = 0;
+    printf("Please enter the line number you want to delete : ");
+    scanf("%d", &del);
+    fptr1 = fopen(file1,"r");
+    fptr2 = fopen(file2, "w");
+    curr = getc(fptr1);
+    if(curr!=EOF) {line_number =1;}
+    while(1){
+      if(del != line_number)
+        putc(curr, fptr2);
+        curr = getc(fptr1);
+        if(curr =='\n') line_number++;
+        if(curr == EOF) break;
+    }
+    fclose(fptr1);
+    fclose(fptr2);
+
+    remove("file1.txt");
+    rename("file2.txt","file1.txt")
 }
 
