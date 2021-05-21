@@ -14,7 +14,7 @@ Clone the repo and run the main.exe file.
 
 **Sylvia Lim** -  - [MEINx](https://github.com/MEINx)
 
-**Cathy Cam** -  - [CatzeeC](https://github.com/CatzeeC)
+**Cathy Cam** -  - [Shiyangie](https://github.com/Shiyangie)
 
 **Akshit Amin** -  - [11aki](https://github.com/11aki)
 
